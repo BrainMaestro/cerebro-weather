@@ -1,13 +1,12 @@
 {
-  "name": "cerebro-plugin",
-  "version": "1.0.0",
+  "name": "cerebro-weather",
+  "version": "0.1.0",
   "description": "",
   "license": "MIT",
-  "repository": "KELiON/cerebro-plugin",
+  "repository": "BrainMaestro/cerebro-weather",
   "author": {
-    "name": "Alexandr Subbotin",
-    "email": "kelionweb@gmail.com",
-    "url": "asubbotin.ru"
+    "name": "Ezinwa Okpoechi",
+    "email": "brainmaestro@outlook.com"
   },
   "engines": {
     "node": ">=4"
@@ -21,7 +20,8 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "cerbro-weather"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -38,7 +38,6 @@
     "webpack": "2.1.0-beta.27"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
-    "react-bootstrap-table": "^3.1.1"
+    "bootstrap": "^4.0.0-alpha.6"
   }
 }
