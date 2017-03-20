@@ -3,6 +3,7 @@ import { getWeather } from './api'
 import styles from 'bootstrap/dist/css/bootstrap.css'
 
 const headers = {
+  weather_state_abbr: '#',
   weather_state_name: 'State',
   applicable_date: 'Date',
   min_temp: 'Min Temp (c)',
@@ -42,6 +43,10 @@ export default class Preview extends Component {
                 let value = report[metric]
                 if (typeof value == 'number' && value % 1 != 0) {
                   value = value.toFixed(2)
+                }
+
+                if (metric == 'weather_state_abbr') {
+                  value = <img src={`https://www.metaweather.com/static/img/weather/${value}.svg`} />
                 }
 
                 return <td key={metric}>{value}</td>
