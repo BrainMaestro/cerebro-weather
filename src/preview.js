@@ -5,9 +5,9 @@ import styles from 'bootstrap/dist/css/bootstrap.css'
 const headers = {
   weather_state_name: 'State',
   applicable_date: 'Date',
-  min_temp: 'Min Temp',
-  max_temp: 'Max Temp',
-  the_temp: 'Temp',
+  min_temp: 'Min Temp (c)',
+  max_temp: 'Max Temp (c)',
+  the_temp: 'Temp (c)',
   humidity: 'Humidity',
 }
 
@@ -26,8 +26,8 @@ export default class Preview extends Component {
   render() {
     if (! this.state.weather) return <div>Loading...</div>
 
-    const weather = this.state.weather.consolidated_weather[0]
-    
+    const weatherReports = this.state.weather.consolidated_weather
+
     return (
       <table className={styles.table}>
         <thead>
@@ -36,11 +36,18 @@ export default class Preview extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            {Object.keys(headers).map(metric => (
-              <td key={metric}>{weather[metric]}</td>
-            ))}
-          </tr>
+          {weatherReports.map((report, index) => (
+            <tr key={index}>
+              {Object.keys(headers).map(metric => {
+                let value = report[metric]
+                if (typeof value == 'number' && value % 1 != 0) {
+                  value = value.toFixed(2)
+                }
+
+                return <td key={metric}>{value}</td>
+              })}
+            </tr>
+          ))}
         </tbody>
       </table>
     )
