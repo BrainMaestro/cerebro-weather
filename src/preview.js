@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { getWeather } from './api';
+import { getWeather } from './api'
+import styles from 'bootstrap/dist/css/bootstrap.css'
 
 const headers = {
   weather_state_name: 'State',
@@ -26,13 +27,22 @@ export default class Preview extends Component {
     if (! this.state.weather) return <div>Loading...</div>
 
     const weather = this.state.weather.consolidated_weather[0]
-
+    
     return (
-      <ul>
-        {Object.keys(headers).map(metric => (
-          <ul key={metric}>{`${headers[metric]}: ${weather[metric]}`}</ul>
-        ))}
-      </ul>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {Object.keys(headers).map(header => <th key={header}>{headers[header]}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {Object.keys(headers).map(metric => (
+              <td key={metric}>{weather[metric]}</td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
     )
   }
 }
