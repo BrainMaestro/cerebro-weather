@@ -1,7 +1,7 @@
 {
   "name": "cerebro-weather",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Cerebro plugin to show a five-day weather forecast",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-weather",
   "author": {
