@@ -24,37 +24,51 @@ export default class Preview extends Component {
     getWeather(this.props.city).then(weather => this.setState({ weather }))
   }
 
+  renderBadges() {
+    const { title: city, parent: { title: parentLocation } } = this.state.weather
+    const locations = [city, parentLocation]
+    const badgeStyle = `${styles.badge} ${styles['badge-default']} ${styles['mr-2']}`
+    return (
+      <h4 className={styles['mx-auto']}>
+        {locations.map(location => <span key={location} className={badgeStyle}>{location}</span>)}
+      </h4>
+    )
+  }
+
   render() {
     if (! this.state.weather) return <div>Loading...</div>
 
     const weatherReports = this.state.weather.consolidated_weather
 
     return (
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {Object.keys(headers).map(header => <th key={header}>{headers[header]}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {weatherReports.map((report, index) => (
-            <tr key={index}>
-              {Object.keys(headers).map(metric => {
-                let value = report[metric]
-                if (typeof value == 'number' && value % 1 != 0) {
-                  value = value.toFixed(2)
-                }
-
-                if (metric == 'weather_state_abbr') {
-                  value = <img src={`https://www.metaweather.com/static/img/weather/${value}.svg`} />
-                }
-
-                return <td key={metric}>{value}</td>
-              })}
+      <div>
+        {this.renderBadges()}
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {Object.keys(headers).map(header => <th key={header}>{headers[header]}</th>)}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {weatherReports.map((report, index) => (
+              <tr key={index}>
+                {Object.keys(headers).map(metric => {
+                  let value = report[metric]
+                  if (typeof value == 'number' && value % 1 != 0) {
+                    value = value.toFixed(2)
+                  }
+
+                  if (metric == 'weather_state_abbr') {
+                    value = <img src={`https://www.metaweather.com/static/img/weather/${value}.svg`} width='30' />
+                  }
+
+                  return <td key={metric}>{value}</td>
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
