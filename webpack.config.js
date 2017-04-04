@@ -19,27 +19,14 @@ module.exports = {
   },
   target: 'electron-renderer',
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      use: {
-        loader: 'babel-loader'
-      },
-      exclude: /node_modules/
-    }, {
-      test: /\.css$/,
-      use: [{
-        loader: 'style-loader'
-      }, {
+    rules: [
+      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.png$/, use: 'url-loader' },
+      { test: /\.scss$/, use: ['style-loader', {
         loader: 'css-loader',
-        query: {
-          modules: true
-        }
-      }]
-    }, {
-      test: /\.png$/,
-      use: {
-        loader: 'url-loader'
-      }
-    }]
+        query: { modules: true },
+      }, 'sass-loader'] }
+    ]
   }
 };

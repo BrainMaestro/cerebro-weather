@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/mixins/_hover.scss";
+@import "~bootstrap/scss/mixins/_border-radius.scss";
+@import "~bootstrap/scss/mixins/_badge.scss";
+@import "~bootstrap/scss/mixins/_table-row.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_tables.scss";
+@import "~bootstrap/scss/_badge.scss";
+
+@import "~bootstrap/scss/utilities/_spacing.scss";
+
+.preview {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+table {
+  font-size: 0.8em;
+}
