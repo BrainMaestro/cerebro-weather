@@ -1,6 +1,6 @@
 {
   "name": "cerebro-weather",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Cerebro plugin to show a five-day weather forecast",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-weather",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "ramda": "^0.23.0"
   }
 }
