@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { getWeather } from './api'
-import styles from 'bootstrap/dist/css/bootstrap.css'
+import styles from './styles.scss'
 
 const headers = {
   weather_state_abbr: '#',
@@ -24,14 +24,14 @@ export default class Preview extends Component {
     getWeather(this.props.city).then(weather => this.setState({ weather }))
   }
 
-  renderBadges() {
+  renderTags() {
     const { title: city, parent: { title: parentLocation } } = this.state.weather
     const locations = [city, parentLocation]
     const badgeStyle = `${styles.badge} ${styles['badge-default']} ${styles['mr-2']}`
     return (
-      <h4 className={styles['mx-auto']}>
+      <div className={styles['tags']}>
         {locations.map(location => <span key={location} className={badgeStyle}>{location}</span>)}
-      </h4>
+      </div>
     )
   }
 
@@ -41,8 +41,8 @@ export default class Preview extends Component {
     const weatherReports = this.state.weather.consolidated_weather
 
     return (
-      <div>
-        {this.renderBadges()}
+      <div className={styles.preview}>
+        {this.renderTags()}
         <table className={styles.table}>
           <thead>
             <tr>
