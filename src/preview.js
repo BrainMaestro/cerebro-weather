@@ -25,18 +25,23 @@ export default class Preview extends Component {
   }
 
   renderTags() {
-    const { title: city, parent: { title: parentLocation } } = this.state.weather
+    const {
+      title: city,
+      parent: { title: parentLocation },
+    } = this.state.weather
     const locations = [city, parentLocation]
     const badgeStyle = `${styles.badge} ${styles['badge-default']} ${styles['mr-2']}`
     return (
       <div className={styles['tags']}>
-        {locations.map(location => <span key={location} className={badgeStyle}>{location}</span>)}
+        {locations.map(location => (
+          <span key={location} className={badgeStyle}>{location}</span>
+        ))}
       </div>
     )
   }
 
   render() {
-    if (! this.state.weather) return <div>Loading...</div>
+    if (!this.state.weather) return <div>Loading...</div>
 
     const weatherReports = this.state.weather.consolidated_weather
 
@@ -46,7 +51,9 @@ export default class Preview extends Component {
         <table className={styles.table}>
           <thead>
             <tr>
-              {Object.keys(headers).map(header => <th key={header}>{headers[header]}</th>)}
+              {Object.keys(headers).map(header => (
+                <th key={header}>{headers[header]}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -59,7 +66,12 @@ export default class Preview extends Component {
                   }
 
                   if (metric == 'weather_state_abbr') {
-                    value = <img src={`https://www.metaweather.com/static/img/weather/${value}.svg`} width='30' />
+                    value = (
+                      <img
+                        src={`https://www.metaweather.com/static/img/weather/${value}.svg`}
+                        width="30"
+                      />
+                    )
                   }
 
                   return <td key={metric}>{value}</td>

@@ -1,6 +1,6 @@
 {
   "name": "cerebro-weather",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cerebro plugin to show a five-day weather forecast",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-weather",
@@ -28,7 +28,7 @@
     "babel-loader": "^6.2.8",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babili": "0.0.9",
+    "babili": "^0.0.12",
     "cerebro-tools": "^0.1.0",
     "css-loader": "^0.26.0",
     "node-sass": "^4.5.2",
@@ -37,7 +37,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "2.1.0-beta.27"
+    "webpack": "^2.4.1"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
