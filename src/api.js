@@ -1,5 +1,5 @@
 import { memoize } from 'cerebro-tools'
-import { head, prop, curry } from 'ramda'
+import { head, prop, curry, tryCatch } from 'ramda'
 
 const BASE_URL = 'https://www.metaweather.com/api/location'
 
@@ -20,6 +20,6 @@ const decode = response => response.json()
 export const getWeather = city => (
   searchCity(city)
     .then(head)
-    .then(prop('woeid'))
+    .then(tryCatch(prop('woeid'), () => Promise.reject(`Can't find weather for ${city}`)))
     .then(getCityWeather)
 )
