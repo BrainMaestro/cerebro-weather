@@ -17,9 +17,12 @@ const getCityWeather = memoize(
 
 const decode = response => response.json()
 
-export const getWeather = city => (
+export const getWeather = city =>
   searchCity(city)
     .then(head)
-    .then(tryCatch(prop('woeid'), () => Promise.reject(`Can't find weather for ${city}`)))
+    .then(
+      tryCatch(prop('woeid'), () =>
+        Promise.reject(`Can't find weather for ${city}`)
+      )
+    )
     .then(getCityWeather)
-)
