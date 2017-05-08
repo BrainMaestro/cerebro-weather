@@ -17,12 +17,14 @@ export default class Preview extends Component {
     super(props)
     this.state = {
       weather: null,
-      error: null
+      error: null,
     }
   }
 
   componentDidMount() {
-    getWeather(this.props.city).then(weather => this.setState({ weather })).catch((error) => this.setState({ error }))
+    getWeather(this.props.city)
+      .then(weather => this.setState({ weather }))
+      .catch(error => this.setState({ error }))
   }
 
   renderTags() {
