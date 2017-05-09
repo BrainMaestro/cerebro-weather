@@ -17,11 +17,14 @@ export default class Preview extends Component {
     super(props)
     this.state = {
       weather: null,
+      error: null,
     }
   }
 
   componentDidMount() {
-    getWeather(this.props.city).then(weather => this.setState({ weather }))
+    getWeather(this.props.city)
+      .then(weather => this.setState({ weather }))
+      .catch(error => this.setState({ error }))
   }
 
   renderTags() {
@@ -41,8 +44,8 @@ export default class Preview extends Component {
   }
 
   render() {
-    if (!this.state.weather) return <div>Loading...</div>
-
+    if (!this.state.weather && !this.state.error) return <div>Loading...</div>
+    else if (this.state.error) return <div>Error: {this.state.error}</div>
     const weatherReports = this.state.weather.consolidated_weather
 
     return (
